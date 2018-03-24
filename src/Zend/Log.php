@@ -179,7 +179,7 @@ class Zend_Log
     /**
      * Construct a writer object based on a configuration array
      *
-     * @param  array $config config array with writer spec
+     * @param  array|Zend_Config $config config array with writer spec
      * @return Zend_Log_Writer_Abstract
      * @throws Zend_Log_Exception
      */
@@ -360,7 +360,7 @@ class Zend_Log
      *   $log->log('message', Zend_Log::PRIORITY_NAME)
      *
      * @param  string  $method  priority name
-     * @param  string  $params  message to log
+     * @param  array  $params  message to log
      * @return void
      * @throws Zend_Log_Exception
      */
@@ -495,7 +495,7 @@ class Zend_Log
      * Add a writer.  A writer is responsible for taking a log
      * message and writing it out to storage.
      *
-     * @param  mixed $writer Zend_Log_Writer_Abstract or Config array
+     * @param  array|Zend_Config|Zend_Log_Writer_Abstract $writer Zend_Log_Writer_Abstract or Config array
      * @return Zend_Log
      * @throws Zend_Log_Exception
      */
