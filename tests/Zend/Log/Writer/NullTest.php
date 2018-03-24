@@ -20,8 +20,6 @@
  * @version    $Id$
  */
 
-/** Zend_Log_Writer_Null */
-require_once 'Zend/Log/Writer/Null.php';
 
 /**
  * @category   Zend
@@ -33,6 +31,9 @@ require_once 'Zend/Log/Writer/Null.php';
  */
 class Zend_Log_Writer_NullTest extends PHPUnit\Framework\TestCase
 {
+    /**
+     * @doesNotPerformAssertions
+     */
     public function testWrite()
     {
         $writer = new Zend_Log_Writer_Null();
@@ -45,7 +46,6 @@ class Zend_Log_Writer_NullTest extends PHPUnit\Framework\TestCase
             'writerName' => "Null"
         )));
 
-        require_once 'Zend/Log.php';
         $logger = Zend_Log::factory($cfg['log']);
         $this->assertTrue($logger instanceof Zend_Log);
     }

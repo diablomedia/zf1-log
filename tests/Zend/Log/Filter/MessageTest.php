@@ -20,11 +20,6 @@
  * @version    $Id$
  */
 
-/** Zend_Log */
-require_once 'Zend/Log.php';
-
-/** Zend_Log_Filter_Message */
-require_once 'Zend/Log/Filter/Message.php';
 
 /**
  * @category   Zend

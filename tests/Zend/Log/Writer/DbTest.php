@@ -20,8 +20,6 @@
  * @version    $Id$
  */
 
-/** Zend_Log_Writer_Db */
-require_once 'Zend/Log/Writer/Db.php';
 
 /**
  * @category   Zend
@@ -44,7 +42,6 @@ class Zend_Log_Writer_DbTest extends PHPUnit\Framework\TestCase
     public function testFormattingIsNotSupported()
     {
         try {
-            require_once 'Zend/Log/Formatter/Simple.php';
             $this->writer->setFormatter(new Zend_Log_Formatter_Simple());
             $this->fail();
         } catch (Exception $e) {
@@ -118,7 +115,6 @@ class Zend_Log_Writer_DbTest extends PHPUnit\Framework\TestCase
             ),
         )));
 
-        require_once 'Zend/Log.php';
         $logger = Zend_Log::factory($cfg['log']);
         $this->assertTrue($logger instanceof Zend_Log);
     }

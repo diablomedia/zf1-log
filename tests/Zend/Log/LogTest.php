@@ -20,17 +20,6 @@
  * @version    $Id$
  */
 
-/** Zend_Log */
-require_once 'Zend/Log.php';
-
-/** Zend_Log_Writer_Mock */
-require_once 'Zend/Log/Writer/Mock.php';
-
-/** Zend_Log_Writer_Stream */
-require_once 'Zend/Log/Writer/Stream.php';
-
-/** Zend_Log_FactoryInterface */
-require_once 'Zend/Log/FactoryInterface.php';
 
 /**
  * @category   Zend
@@ -444,6 +433,7 @@ class Zend_Log_LogTest extends PHPUnit\Framework\TestCase
 
     /**
      * @group ZF-9176
+     * @doesNotPerformAssertions
      */
     public function testLogConstructFromConfigFormatter()
     {
@@ -465,6 +455,7 @@ class Zend_Log_LogTest extends PHPUnit\Framework\TestCase
 
 	/**
      * @group ZF-9176
+     * @doesNotPerformAssertions
      */
     public function testLogConstructFromConfigCustomFormatter()
     {
@@ -514,6 +505,9 @@ class Zend_Log_LogTest extends PHPUnit\Framework\TestCase
         $this->assertEquals('c', $logger->getTimestampFormat());
     }
 
+    /**
+     * @doesNotPerformAssertions
+     */
     public function testFactorySupportsPHP53Namespaces()
     {
         if (version_compare(PHP_VERSION, '5.3.0') < 0) {

@@ -20,11 +20,6 @@
  * @version    $Id$
  */
 
-/** Zend_Log */
-require_once 'Zend/Log.php';
-
-/** Zend_Log_Writer_Stream */
-require_once 'Zend/Log/Writer/Stream.php';
 
 /**
  * @category   Zend

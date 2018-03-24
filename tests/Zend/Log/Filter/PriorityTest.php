@@ -20,11 +20,6 @@
  * @version    $Id$
  */
 
-/** Zend_Log */
-require_once 'Zend/Log.php';
-
-/** Zend_Log_Filter_Priority */
-require_once 'Zend/Log/Filter/Priority.php';
 
 /**
  * @category   Zend

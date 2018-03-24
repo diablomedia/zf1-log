@@ -20,8 +20,6 @@
  * @version    $Id$
  */
 
-/** Zend_Log_Formatter_Xml */
-require_once 'Zend/Log/Formatter/Xml.php';
 
 /**
  * @category   Zend

@@ -20,27 +20,6 @@
  * @version    $Id$
  */
 
-/** Zend_Layout */
-require_once 'Zend/Layout.php';
-
-/** Zend_Log */
-require_once 'Zend/Log.php';
-
-/** Zend_Log_Writer_Mail */
-require_once 'Zend/Log/Writer/Mail.php';
-
-/** Zend_Mail */
-require_once 'Zend/Mail.php';
-
-/** Zend_Mail_Transport_Exception */
-require_once 'Zend/Mail/Transport/Exception.php';
-
-/** Zend_View_Exception */
-require_once 'Zend/View/Exception.php';
-
-/** Zend_Mail_Transport_Abstract */
-require_once 'Zend/Mail/Transport/Abstract.php';
-
 
 /**
  * @category   Zend
@@ -77,6 +56,7 @@ class Zend_Log_Writer_MailTest extends PHPUnit\Framework\TestCase
      * Tests normal logging, but with multiple messages for a level.
      *
      * @return void
+     * @doesNotPerformAssertions
      */
     public function testNormalLoggingMultiplePerLevel()
     {
@@ -89,6 +69,7 @@ class Zend_Log_Writer_MailTest extends PHPUnit\Framework\TestCase
      * Tests normal logging without use of Zend_Layout.
      *
      * @return void
+     * @doesNotPerformAssertions
      */
     public function testNormalLoggingNoLayout()
     {
@@ -101,6 +82,7 @@ class Zend_Log_Writer_MailTest extends PHPUnit\Framework\TestCase
      * Tests normal logging with Zend_Layout usage.
      *
      * @return void
+     * @doesNotPerformAssertions
      */
     public function testNormalLoggingWithLayout()
     {
@@ -113,6 +95,7 @@ class Zend_Log_Writer_MailTest extends PHPUnit\Framework\TestCase
      * Tests normal logging with Zend_Layout and a custom formatter for it.
      *
      * @return void
+     * @doesNotPerformAssertions
      */
     public function testNormalLoggingWithLayoutAndItsFormatter()
     {
@@ -281,7 +264,6 @@ class Zend_Log_Writer_MailTest extends PHPUnit\Framework\TestCase
      */
     public function testFluentInterface()
     {
-        require_once 'Zend/Log/Formatter/Simple.php';
         list(, $writer) = $this->_getSimpleLogger(true);
         $instance = $writer->setLayoutFormatter(new Zend_Log_Formatter_Simple())
                            ->setSubjectPrependText('subject');

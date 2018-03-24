@@ -20,11 +20,6 @@
  * @version    $Id$
  */
 
-/** Zend_Log */
-require_once 'Zend/Log.php';
-
-/** Zend_Log_Writer_Stream */
-require_once 'Zend/Log/Writer/Stream.php';
 
 /**
  * @category   Zend
@@ -49,12 +44,18 @@ class Zend_Log_Writer_StreamTest extends PHPUnit\Framework\TestCase
         xml_parser_free($resource);
     }
 
+    /**
+     * @doesNotPerformAssertions
+     */
     public function testConstructorWithValidStream()
     {
         $stream = fopen('php://memory', 'w+');
         new Zend_Log_Writer_Stream($stream);
     }
 
+    /**
+     * @doesNotPerformAssertions
+     */
     public function testConstructorWithValidUrl()
     {
         new Zend_Log_Writer_Stream('php://memory');

@@ -36,6 +36,9 @@
     "archive": {
         "exclude": ["/tests"]
     },
+    "include-path": [
+        "./src"
+    ],
     "scripts": {
         "test": "phpunit ./tests",
         "test-with-coverage": "phpunit --coverage-clover=clover.xml ./tests",

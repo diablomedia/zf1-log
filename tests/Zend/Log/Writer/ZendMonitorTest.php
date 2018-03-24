@@ -20,8 +20,6 @@
  * @version    $Id$
  */
 
-/** Zend_Log_Writer_ZendMonitor */
-require_once 'Zend/Log/Writer/ZendMonitor.php';
 
 /**
  * @category   Zend
@@ -35,6 +33,7 @@ class Zend_Log_Writer_ZendMonitorTest extends PHPUnit\Framework\TestCase
 {
     /**
      * @group ZF-10081
+     * @doesNotPerformAssertions
      */
     public function testWrite()
     {
