@@ -15,9 +15,9 @@
         "diablomedia/zendframework1-exception": "^1.0.0",
         "diablomedia/zendframework1-config": "^1.0.0",
         "diablomedia/zendframework1-loader": "^1.0.0",
-        "diablomedia/zendframework1-layout": "dev-master",
-        "diablomedia/zendframework1-mail": "dev-master",
-        "diablomedia/zendframework1-wildfire": "dev-master"
+        "diablomedia/zendframework1-layout": "*",
+        "diablomedia/zendframework1-mail": "*",
+        "diablomedia/zendframework1-wildfire": "*"
     },
     "autoload": {
         "psr-0": {
