@@ -48,5 +48,11 @@
         "test": "phpunit ./tests",
         "test-with-coverage": "phpunit --coverage-clover=clover.xml ./tests",
         "phpstan": "phpstan analyze -l7 -c phpstan.neon --no-progress ./src --ansi"
+    },
+    "suggest": {
+        "diablomedia/zendframework1-log-writer-db": "Writer that uses Zend_Db",
+        "diablomedia/zendframework1-log-writer-mail": "Writer that uses Zend_Mail",
+        "diablomedia/zendframework1-log-writer-firebug": "Writer that uses Zend_Wildfire (Firebug)",
+        "ext-dom": "Used in the XML Formatter"
     }
 }
