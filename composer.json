@@ -18,8 +18,11 @@
     },
     "autoload": {
         "psr-0": {
-            "Zend_": "src/"
-        }
+            "Zend_Log_": "src/"
+        },
+        "classmap": [
+            "src/Zend/Log.php"
+        ]
     },
     "autoload-dev": {
         "psr-0": {
