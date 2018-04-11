@@ -82,13 +82,16 @@ class Zend_Log_Writer_Stream extends Zend_Log_Writer_Abstract
      * @param  array|Zend_Config $config
      * @return Zend_Log_Writer_Stream
      */
-    static public function factory($config)
+    public static function factory($config)
     {
         $config = self::_parseConfig($config);
-        $config = array_merge(array(
+        $config = array_merge(
+            array(
             'stream' => null,
             'mode'   => null,
-        ), $config);
+            ),
+            $config
+        );
 
         $streamOrUrl = isset($config['url']) ? $config['url'] : $config['stream'];
 
@@ -122,7 +125,7 @@ class Zend_Log_Writer_Stream extends Zend_Log_Writer_Abstract
         $line = $this->_formatter->format($event);
 
         if (false === @fwrite($this->_stream, $line)) {
-            throw new Zend_Log_Exception("Unable to write to stream");
+            throw new Zend_Log_Exception('Unable to write to stream');
         }
     }
 }

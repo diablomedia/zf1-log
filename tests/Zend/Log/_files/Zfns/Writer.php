@@ -10,7 +10,7 @@ class Writer extends \Zend_Log_Writer_Abstract
      * @param  array|\Zend_Config $config
      * @return \Zend_Log_FactoryInterface
      */
-    static public function factory($config)
+    public static function factory($config)
     {
         return new self();
     }

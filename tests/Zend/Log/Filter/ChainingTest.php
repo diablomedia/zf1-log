@@ -33,7 +33,7 @@ class Zend_Log_Filter_ChainingTest extends PHPUnit\Framework\TestCase
 {
     public function setUp()
     {
-        $this->log = fopen('php://memory', 'w');
+        $this->log    = fopen('php://memory', 'w');
         $this->logger = new Zend_Log();
         $this->logger->addWriter(new Zend_Log_Writer_Stream($this->log));
     }
@@ -49,7 +49,7 @@ class Zend_Log_Filter_ChainingTest extends PHPUnit\Framework\TestCase
         $this->logger->addFilter(Zend_Log::WARN);
 
         $this->logger->info($ignored = 'info-message-ignored');
-        $this->logger->warn($logged  = 'warn-message-logged');
+        $this->logger->warn($logged = 'warn-message-logged');
 
         rewind($this->log);
         $logdata = stream_get_contents($this->log);
@@ -60,7 +60,7 @@ class Zend_Log_Filter_ChainingTest extends PHPUnit\Framework\TestCase
 
     public function testFilterOnSpecificWriter()
     {
-        $log2 = fopen('php://memory', 'w');
+        $log2    = fopen('php://memory', 'w');
         $writer2 = new Zend_Log_Writer_Stream($log2);
         $writer2->addFilter(Zend_Log::ERR);
 

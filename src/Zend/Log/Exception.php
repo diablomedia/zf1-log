@@ -27,4 +27,5 @@
  * @version    $Id$
  */
 class Zend_Log_Exception extends Zend_Exception
-{}
+{
+}

@@ -43,7 +43,7 @@ class Zend_Log_Writer_NullTest extends PHPUnit\Framework\TestCase
     public function testFactory()
     {
         $cfg = array('log' => array('memory' => array(
-            'writerName' => "Null"
+            'writerName' => 'Null'
         )));
 
         $logger = Zend_Log::factory($cfg['log']);

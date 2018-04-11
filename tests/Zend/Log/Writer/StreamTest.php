@@ -132,8 +132,8 @@ class Zend_Log_Writer_StreamTest extends PHPUnit\Framework\TestCase
 
     public function testSettingNewFormatter()
     {
-        $stream = fopen('php://memory', 'w+');
-        $writer = new Zend_Log_Writer_Stream($stream);
+        $stream   = fopen('php://memory', 'w+');
+        $writer   = new Zend_Log_Writer_Stream($stream);
         $expected = 'foo';
 
         $formatter = new Zend_Log_Formatter_Simple($expected);
@@ -150,7 +150,7 @@ class Zend_Log_Writer_StreamTest extends PHPUnit\Framework\TestCase
     public function testFactoryStream()
     {
         $cfg = array('log' => array('memory' => array(
-            'writerName'   => "Mock",
+            'writerName'   => 'Mock',
             'writerParams' => array(
                 'stream' => 'php://memory',
                 'mode'   => 'a'
@@ -164,7 +164,7 @@ class Zend_Log_Writer_StreamTest extends PHPUnit\Framework\TestCase
     public function testFactoryUrl()
     {
         $cfg = array('log' => array('memory' => array(
-            'writerName'   => "Mock",
+            'writerName'   => 'Mock',
             'writerParams' => array(
                 'url'  => 'http://localhost',
                 'mode' => 'a'

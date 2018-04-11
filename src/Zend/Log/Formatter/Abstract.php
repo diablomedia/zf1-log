@@ -28,7 +28,6 @@
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @version    $Id$
  */
-abstract class Zend_Log_Formatter_Abstract
-    implements Zend_Log_Formatter_Interface, Zend_Log_FactoryInterface
+abstract class Zend_Log_Formatter_Abstract implements Zend_Log_Formatter_Interface, Zend_Log_FactoryInterface
 {
 }

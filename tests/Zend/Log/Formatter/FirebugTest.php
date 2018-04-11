@@ -34,13 +34,13 @@ class Zend_Log_Formatter_FirebugTest extends PHPUnit\Framework\TestCase
     public function testFormat()
     {
         $event = array(
-            'timestamp' => date('c'),
-        	'message' => 'tottakai',
-            'priority' => 2,
-        	'priorityName' => 'CRIT'
+            'timestamp'    => date('c'),
+            'message'      => 'tottakai',
+            'priority'     => 2,
+            'priorityName' => 'CRIT'
         );
         $formatter = new Zend_Log_Formatter_Firebug();
-        $output = $formatter->format($event);
+        $output    = $formatter->format($event);
 
         $this->assertEquals('tottakai', $output);
     }
@@ -50,7 +50,7 @@ class Zend_Log_Formatter_FirebugTest extends PHPUnit\Framework\TestCase
      */
     public function testFactory()
     {
-        $options = array();
+        $options   = array();
         $formatter = Zend_Log_Formatter_Firebug::factory($options);
         $this->assertTrue($formatter instanceof Zend_Log_Formatter_Firebug);
     }

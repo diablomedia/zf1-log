@@ -68,8 +68,8 @@ class Zend_Log_Filter_SuppressTest extends PHPUnit\Framework\TestCase
     public function testFactory()
     {
         $cfg = array('log' => array('memory' => array(
-            'writerName' => "Mock",
-            'filterName' => "Suppress"
+            'writerName' => 'Mock',
+            'filterName' => 'Suppress'
         )));
 
         $logger = Zend_Log::factory($cfg['log']);

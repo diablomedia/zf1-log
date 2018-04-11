@@ -65,11 +65,11 @@ class Zend_Log_Filter_PriorityTest extends PHPUnit\Framework\TestCase
     public function testFactory()
     {
         $cfg = array('log' => array('memory' => array(
-            'writerName' => "Mock",
-            'filterName' => "Priority",
+            'writerName'   => 'Mock',
+            'filterName'   => 'Priority',
             'filterParams' => array(
-                'priority' => "Zend_Log::CRIT",
-                'operator' => "<="
+                'priority' => 'Zend_Log::CRIT',
+                'operator' => '<='
              ),
         )));
 
@@ -77,12 +77,14 @@ class Zend_Log_Filter_PriorityTest extends PHPUnit\Framework\TestCase
         $this->assertTrue($logger instanceof Zend_Log);
 
         try {
-            $logger = Zend_Log::factory(array('Null' => array(
+            $logger = Zend_Log::factory(
+                array('Null' => array(
                 'writerName'   => 'Mock',
                 'filterName'   => 'Priority',
                 'filterParams' => array(),
-            )));
-        } catch(Exception $e) {
+                ))
+            );
+        } catch (Exception $e) {
             $this->assertTrue($e instanceof Zend_Log_Exception);
             $this->assertRegExp('/must be an integer/', $e->getMessage());
         }

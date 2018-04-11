@@ -39,14 +39,14 @@
  */
 class Zend_Log
 {
-    const EMERG   = 0;  // Emergency: system is unusable
-    const ALERT   = 1;  // Alert: action must be taken immediately
-    const CRIT    = 2;  // Critical: critical conditions
-    const ERR     = 3;  // Error: error conditions
-    const WARN    = 4;  // Warning: warning conditions
-    const NOTICE  = 5;  // Notice: normal but significant condition
-    const INFO    = 6;  // Informational: informational messages
-    const DEBUG   = 7;  // Debug: debug messages
+    const EMERG  = 0;  // Emergency: system is unusable
+    const ALERT  = 1;  // Alert: action must be taken immediately
+    const CRIT   = 2;  // Critical: critical conditions
+    const ERR    = 3;  // Error: error conditions
+    const WARN   = 4;  // Warning: warning conditions
+    const NOTICE = 5;  // Notice: normal but significant condition
+    const INFO   = 6;  // Informational: informational messages
+    const DEBUG  = 7;  // Debug: debug messages
 
     /**
      * @var array of priorities where the keys are the
@@ -91,7 +91,7 @@ class Zend_Log
      *
      * @var callable
      */
-    protected $_origErrorHandler       = null;
+    protected $_origErrorHandler = null;
 
     /**
      *
@@ -103,13 +103,13 @@ class Zend_Log
      *
      * @var array|boolean
      */
-    protected $_errorHandlerMap        = false;
+    protected $_errorHandlerMap = false;
 
     /**
      *
      * @var string
      */
-    protected $_timestampFormat        = 'c';
+    protected $_timestampFormat = 'c';
 
     /**
      * Class constructor.  Create a new logger
@@ -118,7 +118,7 @@ class Zend_Log
      */
     public function __construct(Zend_Log_Writer_Abstract $writer = null)
     {
-        $r = new ReflectionClass($this);
+        $r                 = new ReflectionClass($this);
         $this->_priorities = array_flip($r->getConstants());
 
         if ($writer !== null) {
@@ -134,7 +134,7 @@ class Zend_Log
      * @return Zend_Log
      * @throws Zend_Log_Exception
      */
-    static public function factory($config = array())
+    public static function factory($config = array())
     {
         if ($config instanceof Zend_Config) {
             $config = $config->toArray();
@@ -167,7 +167,7 @@ class Zend_Log
         if (!is_array(current($config))) {
             $log->addWriter(current($config));
         } else {
-            foreach($config as $writer) {
+            foreach ($config as $writer) {
                 $log->addWriter($writer);
             }
         }
@@ -219,7 +219,7 @@ class Zend_Log
         $filter = $this->_constructFromConfig('filter', $config, $this->_defaultFilterNamespace);
 
         if (!$filter instanceof Zend_Log_Filter_Interface) {
-             $filterName = is_object($filter)
+            $filterName = is_object($filter)
                          ? get_class($filter)
                          : 'The specified filter';
             throw new Zend_Log_Exception("{$filterName} does not implement Zend_Log_Filter_Interface");
@@ -228,19 +228,19 @@ class Zend_Log
         return $filter;
     }
 
-   /**
-    * Construct formatter object from configuration array or Zend_Config object
-    *
-    * @param  array|Zend_Config $config Zend_Config or Array
-    * @return Zend_Log_Formatter_Interface
-    * @throws Zend_Log_Exception
-    */
+    /**
+     * Construct formatter object from configuration array or Zend_Config object
+     *
+     * @param  array|Zend_Config $config Zend_Config or Array
+     * @return Zend_Log_Formatter_Interface
+     * @throws Zend_Log_Exception
+     */
     protected function _constructFormatterFromConfig($config)
     {
         $formatter = $this->_constructFromConfig('formatter', $config, $this->_defaultFormatterNamespace);
 
         if (!$formatter instanceof Zend_Log_Formatter_Interface) {
-             $formatterName = is_object($formatter)
+            $formatterName = is_object($formatter)
                          ? get_class($formatter)
                          : 'The specified formatter';
             throw new Zend_Log_Exception($formatterName . ' does not implement Zend_Log_Formatter_Interface');
@@ -270,7 +270,7 @@ class Zend_Log
             );
         }
 
-        $params    = isset($config[ $type .'Params' ]) ? $config[ $type .'Params' ] : array();
+        $params    = isset($config[ $type . 'Params' ]) ? $config[ $type . 'Params' ] : array();
         $className = $this->getClassName($config, $type, $namespace);
         if (!class_exists($className)) {
             Zend_Loader::loadClass($className);
@@ -330,7 +330,8 @@ class Zend_Log
      */
     protected function _packEvent($message, $priority)
     {
-        return array_merge(array(
+        return array_merge(
+            array(
             'timestamp'    => date($this->_timestampFormat),
             'message'      => $message,
             'priority'     => $priority,
@@ -348,7 +349,7 @@ class Zend_Log
     public function __destruct()
     {
         /** @var Zend_Log_Writer_Abstract $writer */
-        foreach($this->_writers as $writer) {
+        foreach ($this->_writers as $writer) {
             $writer->shutdown();
         }
     }
@@ -373,7 +374,7 @@ class Zend_Log
                     throw new Zend_Log_Exception('Missing log message');
                 case 1:
                     $message = array_shift($params);
-                    $extras = null;
+                    $extras  = null;
                     break;
                 default:
                     $message = array_shift($params);
@@ -479,11 +480,9 @@ class Zend_Log
         if (is_int($filter)) {
             /** @see Zend_Log_Filter_Priority */
             $filter = new Zend_Log_Filter_Priority($filter);
-
         } elseif ($filter instanceof Zend_Config || is_array($filter)) {
             $filter = $this->_constructFilterFromConfig($filter);
-
-        } elseif(! $filter instanceof Zend_Log_Filter_Interface) {
+        } elseif (! $filter instanceof Zend_Log_Filter_Interface) {
             throw new Zend_Log_Exception('Invalid filter provided');
         }
 
@@ -600,7 +599,11 @@ class Zend_Log
             } else {
                 $priority = Zend_Log::INFO;
             }
-            $this->log($errstr, $priority, array('errno'=>$errno, 'file'=>$errfile, 'line'=>$errline, 'context'=>$errcontext));
+            $this->log(
+                $errstr,
+                $priority,
+                array('errno'=> $errno, 'file'=>$errfile, 'line'=>$errline, 'context'=>$errcontext)
+            );
         }
 
         if ($this->_origErrorHandler !== null) {

@@ -52,10 +52,10 @@ class Zend_Log_Filter_MessageTest extends PHPUnit\Framework\TestCase
     public function testFactory()
     {
         $cfg = array('log' => array('memory' => array(
-            'writerName'   => "Mock",
-            'filterName'   => "Message",
+            'writerName'   => 'Mock',
+            'filterName'   => 'Message',
             'filterParams' => array(
-                'regexp'   => "/42/"
+                'regexp'   => '/42/'
              ),
         )));
 
@@ -65,13 +65,15 @@ class Zend_Log_Filter_MessageTest extends PHPUnit\Framework\TestCase
 
     public function testFactoryWithConfig()
     {
-        $config = new Zend_Config(array('log' => array('memory' => array(
-            'writerName'   => "Mock",
-            'filterName'   => "Message",
+        $config = new Zend_Config(
+            array('log' => array('memory' => array(
+            'writerName'   => 'Mock',
+            'filterName'   => 'Message',
             'filterParams' => array(
-                'regexp'   => "/42/"
+                'regexp'   => '/42/'
              ),
-        ))));
+            )))
+        );
 
         $filter = Zend_Log_Filter_Message::factory($config->log->memory->filterParams);
         $this->assertTrue($filter instanceof Zend_Log_Filter_Message);

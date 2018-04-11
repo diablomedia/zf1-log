@@ -118,7 +118,7 @@ class Zend_Log_Writer_Syslog extends Zend_Log_Writer_Abstract
      * @param  array|Zend_Config $config
      * @return Zend_Log_Writer_Syslog
      */
-    static public function factory($config)
+    public static function factory($config)
     {
         return new self(self::_parseConfig($config));
     }
@@ -189,7 +189,9 @@ class Zend_Log_Writer_Syslog extends Zend_Log_Writer_Abstract
         }
 
         if (!in_array($facility, $this->_validFacilities)) {
-            throw new Zend_Log_Exception('Invalid log facility provided; please see http://php.net/openlog for a list of valid facility values');
+            throw new Zend_Log_Exception(
+                'Invalid log facility provided; please see http://php.net/openlog for a list of valid facility values'
+            );
         }
 
         if ('WIN' == strtoupper(substr(PHP_OS, 0, 3))
@@ -244,8 +246,7 @@ class Zend_Log_Writer_Syslog extends Zend_Log_Writer_Abstract
         }
 
         if ($this->_application !== self::$_lastApplication
-            || $this->_facility !== self::$_lastFacility)
-        {
+            || $this->_facility !== self::$_lastFacility) {
             $this->_initializeSyslog();
         }
 

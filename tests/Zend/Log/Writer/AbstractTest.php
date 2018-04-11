@@ -81,7 +81,7 @@ class Zend_Log_Writer_AbstractTest_Concrete extends Zend_Log_Writer_Abstract
     {
     }
 
-    static public function factory($config)
+    public static function factory($config)
     {
     }
 }

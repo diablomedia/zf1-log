@@ -44,7 +44,7 @@ class Zend_Log_Writer_MockTest extends PHPUnit\Framework\TestCase
     public function testFactory()
     {
         $cfg = array('log' => array('memory' => array(
-            'writerName' => "Mock"
+            'writerName' => 'Mock'
         )));
 
         $logger = Zend_Log::factory($cfg['log']);

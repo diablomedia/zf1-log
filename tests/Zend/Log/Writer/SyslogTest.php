@@ -111,11 +111,11 @@ class Zend_Log_Writer_SyslogTest extends PHPUnit\Framework\TestCase
     public function testWriteWithFormatter()
     {
         $event = array(
-        	'message' => 'tottakai',
+            'message'  => 'tottakai',
             'priority' => Zend_Log::ERR
         );
 
-        $writer = Zend_Log_Writer_Syslog::factory(array());
+        $writer    = Zend_Log_Writer_Syslog::factory(array());
         $formatter = new Zend_Log_Formatter_Simple('%message% (this is a test)');
         $writer->setFormatter($formatter);
 

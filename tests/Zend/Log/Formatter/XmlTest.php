@@ -33,7 +33,7 @@ class Zend_Log_Formatter_XmlTest extends PHPUnit\Framework\TestCase
 {
     public function testDefaultFormat()
     {
-        $f = new Zend_Log_Formatter_Xml();
+        $f    = new Zend_Log_Formatter_Xml();
         $line = $f->format(array('message' => 'foo', 'priority' => 42));
 
         $this->assertContains('foo', $line);
@@ -42,14 +42,14 @@ class Zend_Log_Formatter_XmlTest extends PHPUnit\Framework\TestCase
 
     public function testConfiguringElementMapping()
     {
-        $f = new Zend_Log_Formatter_Xml('log', array('foo' => 'bar'));
+        $f    = new Zend_Log_Formatter_Xml('log', array('foo' => 'bar'));
         $line = $f->format(array('bar' => 'baz'));
         $this->assertContains('<log><foo>baz</foo></log>', $line);
     }
 
     public function testXmlDeclarationIsStripped()
     {
-        $f = new Zend_Log_Formatter_Xml();
+        $f    = new Zend_Log_Formatter_Xml();
         $line = $f->format(array('message' => 'foo', 'priority' => 42));
 
         $this->assertNotContains('<\?xml version=', $line);
@@ -57,7 +57,7 @@ class Zend_Log_Formatter_XmlTest extends PHPUnit\Framework\TestCase
 
     public function testXmlValidates()
     {
-        $f = new Zend_Log_Formatter_Xml();
+        $f    = new Zend_Log_Formatter_Xml();
         $line = $f->format(array('message' => 'foo', 'priority' => 42));
 
         $sxml = @simplexml_load_string($line);
@@ -70,11 +70,11 @@ class Zend_Log_Formatter_XmlTest extends PHPUnit\Framework\TestCase
      */
     public function testHtmlSpecialCharsInMessageGetEscapedForValidXml()
     {
-        $f = new Zend_Log_Formatter_Xml();
+        $f    = new Zend_Log_Formatter_Xml();
         $line = $f->format(array('message' => '&key1=value1&key2=value2', 'priority' => 42));
 
-        $this->assertContains("&amp;", $line);
-        $this->assertTrue(substr_count($line, "&amp;") == 2);
+        $this->assertContains('&amp;', $line);
+        $this->assertTrue(substr_count($line, '&amp;') == 2);
     }
 
     /**
@@ -83,7 +83,7 @@ class Zend_Log_Formatter_XmlTest extends PHPUnit\Framework\TestCase
      */
     public function testFixingBrokenCharsSoXmlIsValid()
     {
-        $f = new Zend_Log_Formatter_Xml();
+        $f    = new Zend_Log_Formatter_Xml();
         $line = $f->format(array('message' => '&amp', 'priority' => 42));
 
         $this->assertContains('&amp;amp', $line);
@@ -93,19 +93,19 @@ class Zend_Log_Formatter_XmlTest extends PHPUnit\Framework\TestCase
     {
         $options = array(
             'rootElement' => 'log',
-            'elementMap' => array(
-                'word' => 'message',
+            'elementMap'  => array(
+                'word'     => 'message',
                 'priority' => 'priority'
             )
         );
         $event = array(
-            'message' => 'tottakai',
+            'message'  => 'tottakai',
             'priority' => 4
         );
         $expected = '<log><word>tottakai</word><priority>4</priority></log>';
 
         $formatter = new Zend_Log_Formatter_Xml($options);
-        $output = $formatter->format($event);
+        $output    = $formatter->format($event);
         $this->assertContains($expected, $output);
         $this->assertEquals('UTF-8', $formatter->getEncoding());
     }
@@ -117,9 +117,9 @@ class Zend_Log_Formatter_XmlTest extends PHPUnit\Framework\TestCase
     {
         $options = array(
             'rootElement' => 'log',
-            'elementMap' => array(
+            'elementMap'  => array(
                 'timestamp' => 'timestamp',
-                'response' => 'message'
+                'response'  => 'message'
             )
         );
         $formatter = Zend_Log_Formatter_Xml::factory($options);
@@ -135,15 +135,15 @@ class Zend_Log_Formatter_XmlTest extends PHPUnit\Framework\TestCase
             'rootElement' => 'log'
         );
         $event = array(
-            'message' => 'tottakai',
-            'priority' => 4,
-            'context' => array('test'=>'one'),
+            'message'   => 'tottakai',
+            'priority'  => 4,
+            'context'   => array('test'=>'one'),
             'reference' => new Zend_Log_Formatter_Xml()
         );
         $expected = '<log><message>tottakai</message><priority>4</priority></log>';
 
         $formatter = new Zend_Log_Formatter_Xml($options);
-        $output = $formatter->format($event);
+        $output    = $formatter->format($event);
         $this->assertContains($expected, $output);
     }
 
@@ -156,15 +156,16 @@ class Zend_Log_Formatter_XmlTest extends PHPUnit\Framework\TestCase
             'rootElement' => 'log'
         );
         $event = array(
-            'message' => 'tottakai',
-            'priority' => 4,
-            'context' => array('test'=>'one'),
+            'message'   => 'tottakai',
+            'priority'  => 4,
+            'context'   => array('test'=>'one'),
             'reference' => new Zend_Log_Formatter_XmlTest_SerializableObject()
         );
-        $expected = '<log><message>tottakai</message><priority>4</priority><reference>Zend_Log_Formatter_XmlTest_SerializableObject</reference></log>';
+        $expected = '<log><message>tottakai</message><priority>4</priority>' .
+            '<reference>Zend_Log_Formatter_XmlTest_SerializableObject</reference></log>';
 
         $formatter = new Zend_Log_Formatter_Xml($options);
-        $output = $formatter->format($event);
+        $output    = $formatter->format($event);
         $this->assertContains($expected, $output);
     }
 }
