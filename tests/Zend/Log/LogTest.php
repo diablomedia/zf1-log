@@ -174,7 +174,7 @@ class Zend_Log_LogTest extends PHPUnit\Framework\TestCase
         $logger = new Zend_Log($mock = new Zend_Log_Writer_Mock);
         $logger->info('foo');
 
-        $this->assertEquals(1, count($mock->events));
+        $this->assertCount(1, $mock->events);
         $event = array_shift($mock->events);
 
         $standardFields = array_flip(array('timestamp', 'priority', 'priorityName', 'message'));
@@ -188,7 +188,7 @@ class Zend_Log_LogTest extends PHPUnit\Framework\TestCase
         $logger->setEventItem($field = 'bar', $value = 43);
         $logger->info('foo');
 
-        $this->assertEquals(1, count($mock->events));
+        $this->assertCount(1, $mock->events);
         $event = array_shift($mock->events);
 
         $this->assertArrayHasKey($field, $event);
