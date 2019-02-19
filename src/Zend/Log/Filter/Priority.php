@@ -95,6 +95,6 @@ class Zend_Log_Filter_Priority extends Zend_Log_Filter_Abstract
      */
     public function accept($event)
     {
-        return version_compare($event['priority'], $this->_priority, $this->_operator);
+        return version_compare($event['priority'], (string) $this->_priority, $this->_operator);
     }
 }

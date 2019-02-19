@@ -89,7 +89,7 @@ class Zend_Log
 
     /**
      *
-     * @var callable
+     * @var callable|null
      */
     protected $_origErrorHandler = null;
 
