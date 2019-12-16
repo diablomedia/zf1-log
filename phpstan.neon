@@ -1,5 +1,6 @@
 parameters:
-    level: 7
+    checkMissingIterableValueType: false
+    level: 8
     paths:
         - ./
     excludes_analyse:
@@ -7,13 +8,10 @@ parameters:
         - %rootDir%/../../../vendor/*
     bootstrap: %rootDir%/../../../phpstan-bootstrap.php
     ignoreErrors:
-        # These seem like they need to be updated in phpstan (function signature stuff)
-        - '#Parameter \#3 \$severe of function monitor_custom_event expects severe, int given\.#'
-        - '#Parameter \#4 \$user_data of function monitor_custom_event expects user_data, array given\.#'
         # Zend_Config has an __isset overload defined so that these array-like calls will work
         - '#Cannot assign offset .+ to .?array.?\|Zend_Config\.#'
         # call_user_func does accept an array as the callable
-        - '#Parameter \#1 \$function of function call_user_func expects callable\(\): mixed, array\(string, .factory.\) given\.#'
+        - '#Parameter \#1 \$function of function call_user_func expects callable\(\): mixed, array\(class-string, .factory.\) given\.#'
         -
             message: '#Parameter \#2 \$priority of method Zend_Log::log\(\) expects int, int\|string given\.#'
             path: %currentWorkingDirectory%/src/Zend/Log.php
