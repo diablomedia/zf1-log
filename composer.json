@@ -27,17 +27,9 @@
             "Zend_": "tests/"
         }
     },
-    "repositories": [
-        {
-            "type": "vcs",
-            "no-api": true,
-            "url": "https://github.com/diablomedia/phpstorm-stubs"
-        }
-    ],
     "require-dev": {
         "phpunit/phpunit": "^7.0",
         "phpstan/phpstan": "0.12.8",
-        "jetbrains/phpstorm-stubs": "dev-phpstan",
         "friendsofphp/php-cs-fixer": "2.16.1",
         "maglnet/composer-require-checker": "^1.1.0 || ^2.0.0",
         "phpro/grumphp": "^0.16.0"

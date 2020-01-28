@@ -155,7 +155,9 @@ class Zend_Log_Formatter_Xml extends Zend_Log_Formatter_Abstract
         }
 
         $xml = $dom->saveXML();
-        $xml = preg_replace('/<\?xml version="1.0"( encoding="[^\"]*")?\?>\n/u', '', $xml);
+        if ($xml !== false) {
+            $xml = preg_replace('/<\?xml version="1.0"( encoding="[^\"]*")?\?>\n/u', '', $xml);
+        }
 
         return $xml . PHP_EOL;
     }

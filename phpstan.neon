@@ -4,19 +4,19 @@ parameters:
     paths:
         - ./
     excludes_analyse:
-        - %rootDir%/../../../tests/*
-        - %rootDir%/../../../vendor/*
-    bootstrap: %rootDir%/../../../phpstan-bootstrap.php
+        - ./tests/*
+        - ./vendor/*
+    bootstrap: ./phpstan-bootstrap.php
     ignoreErrors:
         # Zend_Config has an __isset overload defined so that these array-like calls will work
-        - '#Cannot assign offset .+ to .?array.?\|Zend_Config\.#'
+        - '#Cannot access offset .+ on array\|Zend_Config\.#'
         # call_user_func does accept an array as the callable
         - '#Parameter \#1 \$function of function call_user_func expects callable\(\): mixed, array\(class-string, .factory.\) given\.#'
         -
             message: '#Parameter \#2 \$priority of method Zend_Log::log\(\) expects int, int\|string given\.#'
             path: %currentWorkingDirectory%/src/Zend/Log.php
         -
-            message: '#Cannot assign offset int to array\|bool\.#'
+            message: '#Cannot access offset int on array\|bool\.#'
             path: %currentWorkingDirectory%/src/Zend/Log.php
         -
             message: '#Property Zend_Log_Writer_Stream::\$_stream \(resource\|null\) does not accept resource\|false\.#'
