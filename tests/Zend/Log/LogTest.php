@@ -31,7 +31,7 @@
  */
 class Zend_Log_LogTest extends PHPUnit\Framework\TestCase
 {
-    public function setUp()
+    public function setUp(): void
     {
         $this->log    = fopen('php://memory', 'w+');
         $this->writer = new Zend_Log_Writer_Stream($this->log);
@@ -45,7 +45,7 @@ class Zend_Log_LogTest extends PHPUnit\Framework\TestCase
         $logger->log($message = 'message-to-log', Zend_Log::INFO);
 
         rewind($this->log);
-        $this->assertContains($message, stream_get_contents($this->log));
+        $this->assertStringContainsString($message, stream_get_contents($this->log));
     }
 
     public function testAddWriter()
@@ -55,7 +55,7 @@ class Zend_Log_LogTest extends PHPUnit\Framework\TestCase
         $logger->log($message = 'message-to-log', Zend_Log::INFO);
 
         rewind($this->log);
-        $this->assertContains($message, stream_get_contents($this->log));
+        $this->assertStringContainsString($message, stream_get_contents($this->log));
     }
 
     public function testAddWriterAddsMultipleWriters()
@@ -77,9 +77,9 @@ class Zend_Log_LogTest extends PHPUnit\Framework\TestCase
 
         // verify both writers were called by the logger
         rewind($log1);
-        $this->assertContains($message, stream_get_contents($log1));
+        $this->assertStringContainsString($message, stream_get_contents($log1));
         rewind($log2);
-        $this->assertContains($message, stream_get_contents($log2));
+        $this->assertStringContainsString($message, stream_get_contents($log2));
 
         // prove the two memory streams are different
         // and both writers were indeed called
@@ -163,8 +163,8 @@ class Zend_Log_LogTest extends PHPUnit\Framework\TestCase
 
         rewind($this->log);
         $logdata = stream_get_contents($this->log);
-        $this->assertContains((string)$priority, $logdata);
-        $this->assertContains($message, $logdata);
+        $this->assertStringContainsString((string)$priority, $logdata);
+        $this->assertStringContainsString($message, $logdata);
     }
 
     // Fields
@@ -230,7 +230,7 @@ class Zend_Log_LogTest extends PHPUnit\Framework\TestCase
         $event = array_shift($mock->events);
         $this->assertContains('info', array_keys($event));
         $info = $event['info'];
-        $this->assertContains('nonesuch', $info);
+        $this->assertStringContainsString('nonesuch', $info);
     }
 
     // Factory

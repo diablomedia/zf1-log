@@ -52,6 +52,6 @@ class Zend_Log_Writer_ZendMonitorTest extends PHPUnit\Framework\TestCase
     public function testIsEnabled()
     {
         $writer = new Zend_Log_Writer_ZendMonitor();
-        $this->assertInternalType('bool', $writer->isEnabled());
+        $this->assertIsBool($writer->isEnabled());
     }
 }

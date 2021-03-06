@@ -36,7 +36,7 @@ class Zend_Log_Writer_AbstractTest extends PHPUnit\Framework\TestCase
      */
     protected $_writer;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->_writer = new Zend_Log_Writer_AbstractTest_Concrete();
     }

@@ -6,7 +6,8 @@ parameters:
     excludes_analyse:
         - ./tests/*
         - ./vendor/*
-    bootstrap: ./phpstan-bootstrap.php
+    bootstrapFiles:
+        - ./phpstan-bootstrap.php
     ignoreErrors:
         # Zend_Config has an __isset overload defined so that these array-like calls will work
         - '#Cannot access offset .+ on array\|Zend_Config\.#'
