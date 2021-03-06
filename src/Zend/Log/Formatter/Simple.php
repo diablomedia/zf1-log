@@ -94,6 +94,8 @@ class Zend_Log_Formatter_Simple extends Zend_Log_Formatter_Abstract
                 || is_array($value)
             ) {
                 $value = gettype($value);
+            } elseif (is_resource($value)) {
+                $value = (string) $value;
             }
 
             $output = str_replace("%$name%", $value, $output);

@@ -40,6 +40,9 @@ class Zend_Log_Writer_StreamTest extends PHPUnit\Framework\TestCase
         } catch (Exception $e) {
             $this->assertTrue($e instanceof Zend_Log_Exception);
             $this->assertRegExp('/not a stream/i', $e->getMessage());
+        } catch (Throwable $e) {
+            // PHP 8 throws a TypeError here
+            $this->assertInstanceOf(TypeError::class, $e);
         }
         xml_parser_free($resource);
     }
@@ -81,6 +84,9 @@ class Zend_Log_Writer_StreamTest extends PHPUnit\Framework\TestCase
         } catch (Exception $e) {
             $this->assertTrue($e instanceof Zend_Log_Exception);
             $this->assertRegExp('/cannot be opened/i', $e->getMessage());
+        } catch (Throwable $e) {
+            // PHP 8 throws a ValueError here
+            $this->assertInstanceOf(ValueError::class, $e);
         }
     }
 
