@@ -71,7 +71,7 @@ class Zend_Log_Writer_AbstractTest extends PHPUnit\Framework\TestCase
         $instance = $this->_writer->addFilter(1)
                                   ->setFormatter(new Zend_Log_Formatter_Simple());
 
-        $this->assertTrue($instance instanceof Zend_Log_Writer_AbstractTest_Concrete);
+        $this->assertInstanceOf(Zend_Log_Writer_AbstractTest_Concrete::class, $instance);
     }
 }
 

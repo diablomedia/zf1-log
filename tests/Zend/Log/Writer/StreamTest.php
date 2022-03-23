@@ -38,7 +38,7 @@ class Zend_Log_Writer_StreamTest extends PHPUnit\Framework\TestCase
             new Zend_Log_Writer_Stream($resource);
             $this->fail();
         } catch (Exception $e) {
-            $this->assertTrue($e instanceof Zend_Log_Exception);
+            $this->assertInstanceOf(Zend_Log_Exception::class, $e);
             $this->assertMatchesRegularExpression('/not a stream/i', $e->getMessage());
         } catch (Throwable $e) {
             // PHP 8 throws a TypeError here
@@ -71,7 +71,7 @@ class Zend_Log_Writer_StreamTest extends PHPUnit\Framework\TestCase
             new Zend_Log_Writer_Stream($stream, 'w+');
             $this->fail();
         } catch (Exception $e) {
-            $this->assertTrue($e instanceof Zend_Log_Exception);
+            $this->assertInstanceOf(Zend_Log_Exception::class, $e);
             $this->assertMatchesRegularExpression('/existing stream/i', $e->getMessage());
         }
     }
@@ -82,7 +82,7 @@ class Zend_Log_Writer_StreamTest extends PHPUnit\Framework\TestCase
             new Zend_Log_Writer_Stream('');
             $this->fail();
         } catch (Exception $e) {
-            $this->assertTrue($e instanceof Zend_Log_Exception);
+            $this->assertInstanceOf(Zend_Log_Exception::class, $e);
             $this->assertMatchesRegularExpression('/cannot be opened/i', $e->getMessage());
         } catch (Throwable $e) {
             // PHP 8 throws a ValueError here
@@ -115,7 +115,7 @@ class Zend_Log_Writer_StreamTest extends PHPUnit\Framework\TestCase
             $writer->write(array('message' => 'foo'));
             $this->fail();
         } catch (Exception $e) {
-            $this->assertTrue($e instanceof Zend_Log_Exception);
+            $this->assertInstanceOf(Zend_Log_Exception::class, $e);
             $this->assertMatchesRegularExpression('/unable to write/i', $e->getMessage());
         }
     }
@@ -131,7 +131,7 @@ class Zend_Log_Writer_StreamTest extends PHPUnit\Framework\TestCase
             $writer->write(array('message' => 'this write should fail'));
             $this->fail();
         } catch (Exception $e) {
-            $this->assertTrue($e instanceof Zend_Log_Exception);
+            $this->assertInstanceOf(Zend_Log_Exception::class, $e);
             $this->assertMatchesRegularExpression('/unable to write/i', $e->getMessage());
         }
     }
@@ -164,7 +164,7 @@ class Zend_Log_Writer_StreamTest extends PHPUnit\Framework\TestCase
         )));
 
         $logger = Zend_Log::factory($cfg['log']);
-        $this->assertTrue($logger instanceof Zend_Log);
+        $this->assertInstanceOf(Zend_Log::class, $logger);
     }
 
     public function testFactoryUrl()
@@ -178,6 +178,6 @@ class Zend_Log_Writer_StreamTest extends PHPUnit\Framework\TestCase
         )));
 
         $logger = Zend_Log::factory($cfg['log']);
-        $this->assertTrue($logger instanceof Zend_Log);
+        $this->assertInstanceOf(Zend_Log::class, $logger);
     }
 }

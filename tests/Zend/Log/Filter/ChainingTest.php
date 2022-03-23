@@ -49,7 +49,7 @@ class Zend_Log_Filter_ChainingTest extends PHPUnit\Framework\TestCase
         $this->logger->addFilter(Zend_Log::WARN);
 
         $this->logger->info($ignored = 'info-message-ignored');
-        $this->logger->warn($logged = 'warn-message-logged');
+        $this->logger->warn($logged  = 'warn-message-logged');
 
         rewind($this->log);
         $logdata = stream_get_contents($this->log);
@@ -67,7 +67,7 @@ class Zend_Log_Filter_ChainingTest extends PHPUnit\Framework\TestCase
         $this->logger->addWriter($writer2);
 
         $this->logger->warn($warn = 'warn-message');
-        $this->logger->err($err = 'err-message');
+        $this->logger->err($err   = 'err-message');
 
         rewind($this->log);
         $logdata = stream_get_contents($this->log);

@@ -73,6 +73,6 @@ class Zend_Log_Filter_SuppressTest extends PHPUnit\Framework\TestCase
         )));
 
         $logger = Zend_Log::factory($cfg['log']);
-        $this->assertTrue($logger instanceof Zend_Log);
+        $this->assertInstanceOf(Zend_Log::class, $logger);
     }
 }

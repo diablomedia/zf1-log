@@ -61,7 +61,7 @@ class Zend_Log_Formatter_XmlTest extends PHPUnit\Framework\TestCase
         $line = $f->format(array('message' => 'foo', 'priority' => 42));
 
         $sxml = @simplexml_load_string($line);
-        $this->assertTrue($sxml instanceof SimpleXMLElement, 'Formatted XML is invalid');
+        $this->assertInstanceOf(SimpleXMLElement::class, $sxml, 'Formatted XML is invalid');
     }
 
     /**
@@ -123,7 +123,7 @@ class Zend_Log_Formatter_XmlTest extends PHPUnit\Framework\TestCase
             )
         );
         $formatter = Zend_Log_Formatter_Xml::factory($options);
-        $this->assertTrue($formatter instanceof Zend_Log_Formatter_Xml);
+        $this->assertInstanceOf(Zend_Log_Formatter_Xml::class, $formatter);
     }
 
     /**

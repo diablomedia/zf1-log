@@ -57,7 +57,7 @@ class Zend_Log_Filter_PriorityTest extends PHPUnit\Framework\TestCase
             new Zend_Log_Filter_Priority('foo');
             $this->fail();
         } catch (Exception $e) {
-            $this->assertTrue($e instanceof Zend_Log_Exception);
+            $this->assertInstanceOf(Zend_Log_Exception::class, $e);
             $this->assertMatchesRegularExpression('/must be an integer/i', $e->getMessage());
         }
     }
@@ -74,7 +74,7 @@ class Zend_Log_Filter_PriorityTest extends PHPUnit\Framework\TestCase
         )));
 
         $logger = Zend_Log::factory($cfg['log']);
-        $this->assertTrue($logger instanceof Zend_Log);
+        $this->assertInstanceOf(Zend_Log::class, $logger);
 
         try {
             $logger = Zend_Log::factory(
@@ -85,7 +85,7 @@ class Zend_Log_Filter_PriorityTest extends PHPUnit\Framework\TestCase
                 ))
             );
         } catch (Exception $e) {
-            $this->assertTrue($e instanceof Zend_Log_Exception);
+            $this->assertInstanceOf(Zend_Log_Exception::class, $e);
             $this->assertMatchesRegularExpression('/must be an integer/', $e->getMessage());
         }
     }

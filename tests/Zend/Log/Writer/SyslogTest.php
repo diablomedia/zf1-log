@@ -49,7 +49,7 @@ class Zend_Log_Writer_SyslogTest extends PHPUnit\Framework\TestCase
         );
 
         $writer = Zend_Log_Writer_Syslog::factory($cfg);
-        $this->assertTrue($writer instanceof Zend_Log_Writer_Syslog);
+        $this->assertInstanceOf(Zend_Log_Writer_Syslog::class, $writer);
     }
 
     /**
@@ -61,7 +61,7 @@ class Zend_Log_Writer_SyslogTest extends PHPUnit\Framework\TestCase
             $writer = new Zend_Log_Writer_Syslog();
             $writer->setFacility(LOG_USER * 1000);
         } catch (Exception $e) {
-            $this->assertTrue($e instanceof Zend_Log_Exception);
+            $this->assertInstanceOf(Zend_Log_Exception::class, $e);
             $this->assertStringContainsString('Invalid log facility provided', $e->getMessage());
         }
     }
@@ -78,7 +78,7 @@ class Zend_Log_Writer_SyslogTest extends PHPUnit\Framework\TestCase
             $writer = new Zend_Log_Writer_Syslog();
             $writer->setFacility(LOG_AUTH);
         } catch (Exception $e) {
-            $this->assertTrue($e instanceof Zend_Log_Exception);
+            $this->assertInstanceOf(Zend_Log_Exception::class, $e);
             $this->assertStringContainsString('Only LOG_USER is a valid', $e->getMessage());
         }
     }
@@ -92,7 +92,7 @@ class Zend_Log_Writer_SyslogTest extends PHPUnit\Framework\TestCase
         $instance = $writer->setFacility(LOG_USER)
                            ->setApplicationName('my_app');
 
-        $this->assertTrue($instance instanceof Zend_Log_Writer_Syslog);
+        $this->assertInstanceOf(Zend_Log_Writer_Syslog::class, $instance);
     }
 
     /**

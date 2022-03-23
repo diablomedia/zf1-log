@@ -37,7 +37,7 @@ class Zend_Log_Formatter_SimpleTest extends PHPUnit\Framework\TestCase
             new Zend_Log_Formatter_Simple(1);
             $this->fail();
         } catch (Exception $e) {
-            $this->assertTrue($e instanceof Zend_Log_Exception);
+            $this->assertInstanceOf(Zend_Log_Exception::class, $e);
             $this->assertMatchesRegularExpression('/must be a string/i', $e->getMessage());
         }
     }
@@ -109,7 +109,7 @@ class Zend_Log_Formatter_SimpleTest extends PHPUnit\Framework\TestCase
             'format' => '%timestamp% [%priority%]: %message% -- %info%'
         );
         $formatter = Zend_Log_Formatter_Simple::factory($options);
-        $this->assertTrue($formatter instanceof Zend_Log_Formatter_Simple);
+        $this->assertInstanceOf(Zend_Log_Formatter_Simple::class, $formatter);
     }
 }
 

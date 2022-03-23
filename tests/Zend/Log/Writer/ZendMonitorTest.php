@@ -46,7 +46,7 @@ class Zend_Log_Writer_ZendMonitorTest extends PHPUnit\Framework\TestCase
         $cfg = array();
 
         $writer = Zend_Log_Writer_ZendMonitor::factory($cfg);
-        $this->assertTrue($writer instanceof Zend_Log_Writer_ZendMonitor);
+        $this->assertInstanceOf(Zend_Log_Writer_ZendMonitor::class, $writer);
     }
 
     public function testIsEnabled()
