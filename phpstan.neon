@@ -9,8 +9,6 @@ parameters:
     bootstrapFiles:
         - ./phpstan-bootstrap.php
     ignoreErrors:
-        # Zend_Config has an __isset overload defined so that these array-like calls will work
-        - '#Cannot access offset .+ on array\|Zend_Config\.#'
         # call_user_func does accept an array as the callable
         -
             message: '#Parameter \#1 \$(function|callback) of function call_user_func expects callable\(\): mixed, array{string, .factory.} given\.#'
@@ -35,3 +33,8 @@ parameters:
         -
             message: '#Parameter \#1 \$(argument|objectOrClass) of class ReflectionClass constructor expects class-string<T of object>\|T of object, string given\.#'
             path: ./src/Zend/Log.php
+        # There are checks before this, though probably needs an array check
+        -
+            message: '#Cannot cast array{}\|bool\|float\|int\|object\|string\|null to string\.#'
+            count: 2
+            path: ./src/Zend/Log/Formatter/Xml.php

@@ -31,6 +31,9 @@
  */
 class Zend_Log_Filter_ChainingTest extends PHPUnit\Framework\TestCase
 {
+    protected $log;
+    protected $logger;
+
     public function setUp(): void
     {
         $this->log    = fopen('php://memory', 'w');

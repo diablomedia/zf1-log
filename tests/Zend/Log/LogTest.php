@@ -31,6 +31,11 @@
  */
 class Zend_Log_LogTest extends PHPUnit\Framework\TestCase
 {
+    protected $writer;
+    protected $log;
+    protected $expectingLogging;
+    protected $errWriter;
+
     public function setUp(): void
     {
         $this->log    = fopen('php://memory', 'w+');
