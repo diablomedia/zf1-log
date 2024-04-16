@@ -17,9 +17,6 @@ parameters:
             message: '#Parameter \#2 \$priority of method Zend_Log::log\(\) expects int, int\|string given\.#'
             path: './src/Zend/Log.php'
         -
-            message: '#Cannot access offset int on array\|bool\.#'
-            path: './src/Zend/Log.php'
-        -
             message: '#Property Zend_Log_Writer_Stream::\$_stream \(resource\|null\) does not accept resource\|false\.#'
             path: './src/Zend/Log/Writer/Stream.php'
         -
