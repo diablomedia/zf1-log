@@ -1,5 +1,5 @@
 parameters:
-    checkMissingIterableValueType: false
+    treatPhpDocTypesAsCertain: false
     level: 8
     paths:
         - ./
@@ -9,6 +9,8 @@ parameters:
     bootstrapFiles:
         - ./phpstan-bootstrap.php
     ignoreErrors:
+        -
+            identifier: missingType.iterableValue
         # call_user_func does accept an array as the callable
         -
             message: '#Parameter \#1 \$(function|callback) of function call_user_func expects callable\(\): mixed, array{string, .factory.} given\.#'
@@ -25,9 +27,6 @@ parameters:
         # All of these are defensive coding in case an object isn't returned from _constructFromConfig (which is
         # possible, since it's a call_user_func return)
         -
-            message: '#Else branch is unreachable because ternary operator condition is always true.#'
-            path: './src/Zend/Log.php'
-        -
             message: '#Parameter \#1 \$(argument|objectOrClass) of class ReflectionClass constructor expects class-string<T of object>\|T of object, string given\.#'
             path: ./src/Zend/Log.php
         # There are checks before this, though probably needs an array check
@@ -35,3 +34,14 @@ parameters:
             message: '#Cannot cast array{}\|bool\|float\|int\|object\|string\|null to string\.#'
             count: 2
             path: ./src/Zend/Log/Formatter/Xml.php
+        -
+            message: '#^Cannot access offset ''filterName'' on array\|Zend_Config\.$#'
+            identifier: offsetAccess.nonOffsetAccessible
+            count: 1
+            path: src/Zend/Log.php
+
+        -
+            message: '#^Cannot access offset ''formatterName'' on array\|Zend_Config\.$#'
+            identifier: offsetAccess.nonOffsetAccessible
+            count: 1
+            path: src/Zend/Log.php
