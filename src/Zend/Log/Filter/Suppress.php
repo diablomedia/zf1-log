@@ -65,7 +65,6 @@ class Zend_Log_Filter_Suppress extends Zend_Log_Filter_Abstract
      *
      * @param  array|Zend_Config $config
      * @return Zend_Log_Filter_Suppress
-     * @throws Zend_Log_Exception
      */
     public static function factory($config)
     {
