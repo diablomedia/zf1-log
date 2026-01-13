@@ -44,7 +44,6 @@ class Zend_Log_Writer_StreamTest extends PHPUnit\Framework\TestCase
             // PHP 8 throws a TypeError here
             $this->assertInstanceOf(TypeError::class, $e);
         }
-        xml_parser_free($resource);
     }
 
     /**
